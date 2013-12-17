@@ -1,0 +1,58 @@
+/*
+		 
+			Proyecto : 	.cloud
+			Autor :		Antonio Juan Sánchez Martín
+			Fecha : 	5 / 11 /2012
+			
+*/
+
+
+div.formulario
+{
+	margin-left: 	-215px !important;
+	width: 			350px;
+	margin-left: 	-205px;
+	margin-top:		-200px;
+	margin-left: 	-180px;
+	height:			340px;
+	z-index: 		10;
+}
+
+div.index img#logo
+{
+	width:			80px;
+	position: 		fixed:;
+	left: 0px;
+	top: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	}
+
+div#logo_capa
+{
+	position:		absolute;
+	left:			50%;
+	top:			50%;	
+	z-index: 		11;	
+	width: 			40px;
+	height: 		40px;
+	margin-top:		-230px;
+	margin-left: 	-170px;
+}
+
+
+
+.etiqueta
+{
+	width:			150px;
+}
+#form_inicio_entrar
+{
+	width: 340px;
+}
+
+div#capa_mensajes
+{
+	margin-top: 200px;
+	display: block;
+}

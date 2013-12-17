@@ -1,0 +1,12 @@
+.idea
+bin/behat
+bin/phpunit
+build.properties
+build/*
+.buildpath
+.project
+.settings/
+*.swp
+vendor/*
+composer.phar
+data/templates/*

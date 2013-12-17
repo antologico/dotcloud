@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="ConexionMySQL.php" hash="9db11945f05a8542909e8bcb5c8ca18f" package="dotcloud"/>
+  <file path="Pagina.php" hash="49cbd77b2678eff8f79cf3e76e742f6b" package="dotcloud"/>
+  <file path="ElementoHTML.php" hash="24a1ea73fb49dfdb2b6edf4dc1db5b70" package="dotcloud"/>
+  <file path="Directorio.php" hash="df16c0a330c19a865332eae2c1bc6acc" package="dotcloud"/>
+  <file path="Texto.php" hash="810cc0114f21962e28b87e37948e5473" package="dotcloud"/>
+  <file path="Sesion.php" hash="f9b8610745e601eb4b30032aae80f1fe" package="dotcloud"/>
+  <file path="Proyecto.php" hash="5c1877936ec402e5c03697099b653f01" package="dotcloud">
+    <docblock line="3">
+      <description>Paquete .cloud</description>
+      <long-description></long-description>
+      <tag line="3" name="package" description="dotcloud"/>
+    </docblock>
+    <include line="8" type="Include Once" package="dotcloud">
+      <name>ObjetoBD.php</name>
+    </include>
+    <include line="9" type="Include Once" package="dotcloud">
+      <name>Compilador.php</name>
+    </include>
+    <include line="10" type="Include Once" package="dotcloud">
+      <name>Directorio.php</name>
+    </include>
+    <include line="11" type="Include Once" package="dotcloud">
+      <name>Usuario.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="20" package="dotcloud">
+      <extends>\ObjetoBD</extends>
+      <name>Proyecto</name>
+      <full_name>\Proyecto</full_name>
+      <docblock line="14">
+        <description>Clase entidad para la gestión de los proyectos</description>
+        <long-description></long-description>
+        <tag line="14" name="author" description="Antonio Juan Sánchez Martín"/>
+        <tag line="14" name="version" description="0.9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="28" package="dotcloud">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="23">
+          <description>Constructor</description>
+          <long-description></long-description>
+          <tag line="23" name="param" description="Referencia a la sesión" type="\Sesion" variable="$sesion">
+            <type by_reference="false">\Sesion</type>
+          </tag>
+          <tag line="23" name="param" description="ID del objeto" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="28">
+          <name>$sesion</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="28">
+          <name>$id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="40" package="dotcloud">
+        <name>idcompilador</name>
+        <full_name>idcompilador</full_name>
+        <docblock line="35">
+          <description>Devuelve el id del compilador que utilizará proyecto</description>
+          <long-description></long-description>
+          <tag line="35" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="35" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="40">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="51" package="dotcloud">
+        <name>fecha</name>
+        <full_name>fecha</full_name>
+        <docblock line="46">
+          <description>Devuelve la fecha de creación del proyecto</description>
+          <long-description></long-description>
+          <tag line="46" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="46" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="51">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="63" package="dotcloud">
+        <name>idcreador</name>
+        <full_name>idcreador</full_name>
+        <docblock line="58">
+          <description>Devuelve el id del usuario creador del proyecto</description>
+          <long-description></long-description>
+          <tag line="58" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="58" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="63">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="75" package="dotcloud">
+        <name>estado</name>
+        <full_name>estado</full_name>
+        <docblock line="70">
+          <description>Devuelve el estado del proyecto</description>
+          <long-description></long-description>
+          <tag line="70" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="75">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="87" package="dotcloud">
+        <name>usuarios</name>
+        <full_name>usuarios</full_name>
+        <docblock line="83">
+          <description>Devuelve el id, nombre y email de todos los usuarios del proyecto.</description>
+          <long-description>&lt;p&gt;Null en caso de fallo&lt;/p&gt;</long-description>
+          <tag line="83" name="return" description="Listado de usuarios" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="100" package="dotcloud">
+        <name>usuarioRango</name>
+        <full_name>usuarioRango</full_name>
+        <docblock line="95">
+          <description>Devuelve el rango de un usuario con respecto al proyecto</description>
+          <long-description></long-description>
+          <tag line="95" name="param" description="Valor del elemento" type="string" variable="$idusuario">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="95" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="100">
+          <name>$idusuario</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="133" package="dotcloud">
+        <name>crear</name>
+        <full_name>crear</full_name>
+        <docblock line="127">
+          <description>Crea un nuevo proyecto con los valores indicados asociados</description>
+          <long-description></long-description>
+          <tag line="127" name="param" description="nombre del proyecto" type="string" variable="$nombre">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="127" name="param" description="Id del compilador que utilizará el proyecto" type="string" variable="$idcompilador">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="127" name="return" description="Devuelve -1 en caso de fallo" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="133">
+          <name>$nombre</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="133">
+          <name>$idcompilador</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="187" package="dotcloud">
+        <name>modificar</name>
+        <full_name>modificar</full_name>
+        <docblock line="180">
+          <description>Crea un nuevo proyecto con los valores indicados asociados</description>
+          <long-description></long-description>
+          <tag line="180" name="param" description="nombre del proyecto" type="string" variable="$nombre">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="180" name="param" description="ID del compilador que utilizará el proyecto" type="string" variable="$idcompilador">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="180" name="param" description="ID del proyecto" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="180" name="return" description="Devuelve -1 en caso de fallo" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="187">
+          <name>$nombre</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="187">
+          <name>$idcompilador</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="187">
+          <name>$id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="215" package="dotcloud">
+        <name>borrar</name>
+        <full_name>borrar</full_name>
+        <docblock line="210">
+          <description>Borrar el proyecto indicado</description>
+          <long-description></long-description>
+          <tag line="210" name="param" description="id del proyecto, en caso de no indicarlo se borra el actual" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="210" name="return" description="Devuelve 0 en caso de éxito, -1 en caso de fallo" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="215">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="257" package="dotcloud">
+        <name>asignarRango</name>
+        <full_name>asignarRango</full_name>
+        <docblock line="251">
+          <description>Devuelve el id, nombre y email de todos los usuarios del proyecto.</description>
+          <long-description>&lt;p&gt;Null en caso de fallo&lt;/p&gt;</long-description>
+          <tag line="251" name="param" description="id del usuario a tratar" type="string" variable="$idusuario">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="251" name="param" description="Sin el idrango == null o no definido lo que se hace es borrar el rol" type="string" variable="$idrango">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="251" name="return" description="Devuelve 0 en caso de éxito, -1 en caso de fallo" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="257">
+          <name>$idusuario</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="257">
+          <name>$idrango</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="314" package="dotcloud">
+        <name>listarUsuarios</name>
+        <full_name>listarUsuarios</full_name>
+        <docblock line="310">
+          <description>Devuelve el listado de usuarios del proyecto y su rango</description>
+          <long-description></long-description>
+          <tag line="310" name="return" description="Listato de usuarios" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="ObjetoBD.php" hash="83529426c5ad7c293f2349fd5b87280e" package="dotcloud">
+    <docblock line="3">
+      <description>Paquete .cloud</description>
+      <long-description></long-description>
+      <tag line="3" name="package" description="dotcloud"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="14" package="dotcloud">
+      <extends/>
+      <name>ObjetoBD</name>
+      <full_name>\ObjetoBD</full_name>
+      <docblock line="8">
+        <description>Clase entidad para la gestión de los objetos de la base de datos</description>
+        <long-description></long-description>
+        <tag line="8" name="author" description="Antonio Juan Sánchez Martín"/>
+        <tag line="8" name="version" description="0.9"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="20" namespace="global" package="dotcloud">
+        <name>$sesion</name>
+        <default>null</default>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+          <tag line="16" name="var" description="onexión con la sesión" type="\Sesion">
+            <type by_reference="false">\Sesion</type>
+          </tag>
+          <tag line="16" name="access" description="protected"/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="25" namespace="global" package="dotcloud">
+        <name>$tabla</name>
+        <default>null</default>
+        <docblock line="21">
+          <description></description>
+          <long-description></long-description>
+          <tag line="21" name="var" description="Nombre de la tabla" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="21" name="access" description="protected"/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="34" package="dotcloud">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="28">
+          <description>Constructor</description>
+          <long-description></long-description>
+          <tag line="28" name="param" description="tipo Tipo del objeto." type="string" variable="$sesion">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="28" name="param" description="ID del objeto" type="\" variable="$id"/>
+          <tag line="28" name="param" description="Nombre de la tabla de datos" type="string" variable="$tabla">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="34">
+          <name>$sesion</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="34">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="34">
+          <name>$tabla</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="47" package="dotcloud">
+        <name>nombre</name>
+        <full_name>nombre</full_name>
+        <docblock line="42">
+          <description>Devuelve nombre del objeto</description>
+          <long-description></long-description>
+          <tag line="42" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="42" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="47">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="57" package="dotcloud">
+        <name>id</name>
+        <full_name>id</full_name>
+        <docblock line="53">
+          <description>Devuelve el id del objeto</description>
+          <long-description></long-description>
+          <tag line="53" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="66" package="dotcloud">
+        <name>sesion</name>
+        <full_name>sesion</full_name>
+        <docblock line="63">
+          <description>Devuelve el id de la sesión</description>
+          <long-description></long-description>
+          <tag line="63" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="78" package="dotcloud">
+        <name>p</name>
+        <full_name>p</full_name>
+        <docblock line="72">
+          <description>Devuelve o modifica la propiedad indicada del objeto</description>
+          <long-description></long-description>
+          <tag line="72" name="param" description="Nombre de la propiedad" type="string" variable="$propiedad">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="78">
+          <name>$propiedad</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="78">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="89" package="dotcloud">
+        <name>consulta</name>
+        <full_name>consulta</full_name>
+        <docblock line="84">
+          <description>Consulta directa a la BD</description>
+          <long-description></long-description>
+          <tag line="84" name="param" description="Consulta SQL" type="string" variable="$consulta">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="84" name="return" description="Resultado de la consulta" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="89">
+          <name>$consulta</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="100" package="dotcloud">
+        <name>borrar</name>
+        <full_name>borrar</full_name>
+        <docblock line="95">
+          <description>Elimina el objeto de la BD</description>
+          <long-description></long-description>
+          <tag line="95" name="param" description="ID del objeto a borrar" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="95" name="return" description="Si ha tenido éxito devuelve un 0" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="100">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Rango.php" hash="e0fb429c8b059ef94b9f6dbe7965d1bd" package="dotcloud">
+    <docblock line="3">
+      <description>Paquete .cloud</description>
+      <long-description></long-description>
+      <tag line="3" name="package" description="dotcloud"/>
+    </docblock>
+    <include line="8" type="Include Once" package="dotcloud">
+      <name>ObjetoBD.php</name>
+    </include>
+    <include line="9" type="Include Once" package="dotcloud">
+      <name>Proyecto.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="17" package="dotcloud">
+      <extends>\ObjetoBD</extends>
+      <name>Rango</name>
+      <full_name>\Rango</full_name>
+      <docblock line="12">
+        <description>Clase entidad para la gestión de los proyectos</description>
+        <long-description></long-description>
+        <tag line="12" name="author" description="Antonio Juan Sánchez Martín"/>
+        <tag line="12" name="version" description="0.9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="25" package="dotcloud">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="20">
+          <description>Constructor</description>
+          <long-description></long-description>
+          <tag line="20" name="param" description="Referencia a la sesión" type="\Sesion" variable="$sesion">
+            <type by_reference="false">\Sesion</type>
+          </tag>
+          <tag line="20" name="param" description="Nombre del objeto a crear" type="string" variable="$nombre">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="25">
+          <name>$sesion</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="25">
+          <name>$nombre</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="45" package="dotcloud">
+        <name>listar</name>
+        <full_name>listar</full_name>
+        <docblock line="41">
+          <description>Listado de rangos del sistema</description>
+          <long-description></long-description>
+          <tag line="41" name="return" description="Lista de usuarios" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="Compilador.php" hash="0d064d529a711d43d933922bb5d56f6f" package="dotcloud">
+    <docblock line="3">
+      <description>Paquete .cloud</description>
+      <long-description></long-description>
+      <tag line="3" name="package" description="dotcloud"/>
+    </docblock>
+    <include line="8" type="Include Once" package="dotcloud">
+      <name>ObjetoBD.php</name>
+    </include>
+    <include line="9" type="Include Once" package="dotcloud">
+      <name>Proyecto.php</name>
+    </include>
+    <include line="10" type="Include Once" package="dotcloud">
+      <name>Directorio.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="18" package="dotcloud">
+      <extends>\ObjetoBD</extends>
+      <name>Compilador</name>
+      <full_name>\Compilador</full_name>
+      <docblock line="13">
+        <description>Clase para manejo de compiladores</description>
+        <long-description></long-description>
+        <tag line="13" name="author" description="Antonio Juan Sánchez Martín"/>
+        <tag line="13" name="version" description="0.9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="26" package="dotcloud">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="21">
+          <description>Constructor</description>
+          <long-description></long-description>
+          <tag line="21" name="param" description="Variable de sesión" type="\Sesion" variable="$sesion">
+            <type by_reference="false">\Sesion</type>
+          </tag>
+          <tag line="21" name="param" description="ID del objeto que se desea instanciar" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="26">
+          <name>$sesion</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="26">
+          <name>$id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="47" package="dotcloud">
+        <name>propiedades</name>
+        <full_name>propiedades</full_name>
+        <docblock line="41">
+          <description>Devuelve un Array con las propiedades que puede tener el proyecto y sus valores por defecto o bien Actualiza o inserta valores de propiedades</description>
+          <long-description></long-description>
+          <tag line="41" name="param" description="ID del proyecto" type="int" variable="$idproyecto">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="41" name="param" description="Listado de valores de las propiedades" type="\array $listado_valores" variable="$listado_valores">
+            <type by_reference="false">\array $listado_valores</type>
+          </tag>
+          <tag line="41" name="return" description="Array con las propiedades que puede tener el proyecto y sus valores por defecto" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="47">
+          <name>$idproyecto</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$listado_valores</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="132" package="dotcloud">
+        <name>propiedad</name>
+        <full_name>propiedad</full_name>
+        <docblock line="125">
+          <description>Consulta o asigna el valor de una propiedad</description>
+          <long-description></long-description>
+          <tag line="125" name="param" description="de la propiedad" type="int" variable="$nombre">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="125" name="param" description="ID del proyecto" type="int" variable="$idproyecto">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="125" name="param" description="Valor de la propiedad" type="\string $valor" variable="$valor">
+            <type by_reference="false">\string $valor</type>
+          </tag>
+          <tag line="125" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="132">
+          <name>$nombre</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="132">
+          <name>$idproyecto</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="132">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="223" package="dotcloud">
+        <name>procesarCompilacion</name>
+        <full_name>procesarCompilacion</full_name>
+        <docblock line="218">
+          <description>Procesa el resultado de una compilación de acuerdo a la regla de compilación</description>
+          <long-description></long-description>
+          <tag line="218" name="param" description="Texto a procesar" type="\string $texto" variable="$texto">
+            <type by_reference="false">\string $texto</type>
+          </tag>
+          <tag line="218" name="return" description="Texto procesado" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="223">
+          <name>$texto</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="283" package="dotcloud">
+        <name>crear</name>
+        <full_name>crear</full_name>
+        <docblock line="278">
+          <description>Dar de alta un nuevo compilador</description>
+          <long-description></long-description>
+          <tag line="278" name="param" description="Nombre del compilador" type="\string $nombre" variable="$nombre">
+            <type by_reference="false">\string $nombre</type>
+          </tag>
+          <tag line="278" name="return" description="Error (0 si no hay error)" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="283">
+          <name>$nombre</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="305" package="dotcloud">
+        <name>listar</name>
+        <full_name>listar</full_name>
+        <docblock line="301">
+          <description>Lista los compiladores del sistema</description>
+          <long-description></long-description>
+          <tag line="301" name="return" description="Lista de compiladores" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="331" package="dotcloud">
+        <name>borrar</name>
+        <full_name>borrar</full_name>
+        <docblock line="326">
+          <description>Borrar un nuevo compilador</description>
+          <long-description></long-description>
+          <tag line="326" name="param" description="ID del compilador" type="\id" variable="$id">
+            <type by_reference="false">\id</type>
+          </tag>
+          <tag line="326" name="return" description="Error (0 si no hay error)" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="331">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="348" package="dotcloud">
+        <name>compilar</name>
+        <full_name>compilar</full_name>
+        <docblock line="344">
+          <description>Compila el proyecto en uso</description>
+          <long-description></long-description>
+          <tag line="344" name="return" description="Error (0 si no hay error)" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="385" package="dotcloud">
+        <name>ejecutar</name>
+        <full_name>ejecutar</full_name>
+        <docblock line="379">
+          <description>Ejecuta el proyecto en uso</description>
+          <long-description></long-description>
+          <tag line="379" name="param" description="Tubería de salida" type="string" variable="$fifo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="379" name="param" description="Valor de la entrada" type="string" variable="$entrada">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="379" name="return" description="Error (0 si no hay error)" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="385">
+          <name>$fifo</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="385">
+          <name>$entrada</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Usuario.php" hash="1f53c2b5517c1f634d9bc02cbf29b74e" package="dotcloud">
+    <docblock line="3">
+      <description>Paquete .cloud</description>
+      <long-description></long-description>
+      <tag line="3" name="package" description="dotcloud"/>
+    </docblock>
+    <include line="9" type="Include Once" package="dotcloud">
+      <name>ObjetoBD.php</name>
+    </include>
+    <include line="10" type="Include Once" package="dotcloud">
+      <name>Proyecto.php</name>
+    </include>
+    <include line="11" type="Include Once" package="dotcloud">
+      <name>Rango.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="19" package="dotcloud">
+      <extends>\ObjetoBD</extends>
+      <name>Usuario</name>
+      <full_name>\Usuario</full_name>
+      <docblock line="14">
+        <description>Clase entidad para la gestión de los usuarios</description>
+        <long-description></long-description>
+        <tag line="14" name="author" description="Antonio Juan Sánchez Martín"/>
+        <tag line="14" name="version" description="0.9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="27" package="dotcloud">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="22">
+          <description>Constructor</description>
+          <long-description></long-description>
+          <tag line="22" name="param" description="Referencia a la sesión" type="\Sesion" variable="$sesion">
+            <type by_reference="false">\Sesion</type>
+          </tag>
+          <tag line="22" name="param" description="ID del objeto" type="int" variable="$idusuario">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="27">
+          <name>$sesion</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="27">
+          <name>$idusuario</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="40" package="dotcloud">
+        <name>apellidos</name>
+        <full_name>apellidos</full_name>
+        <docblock line="35">
+          <description>Devuelve los apellidos del usuario</description>
+          <long-description></long-description>
+          <tag line="35" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="35" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="40">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="51" package="dotcloud">
+        <name>email</name>
+        <full_name>email</full_name>
+        <docblock line="46">
+          <description>Devuelve el email del usuario</description>
+          <long-description></long-description>
+          <tag line="46" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="46" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="51">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="63" package="dotcloud">
+        <name>password</name>
+        <full_name>password</full_name>
+        <docblock line="58">
+          <description>Devuelve el password del usuario</description>
+          <long-description></long-description>
+          <tag line="58" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="58" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="63">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="75" package="dotcloud">
+        <name>rango</name>
+        <full_name>rango</full_name>
+        <docblock line="70">
+          <description>Devuelve el nombre del compilador que utilizará proyecto</description>
+          <long-description></long-description>
+          <tag line="70" name="param" description="Valor del elemento" type="string" variable="$valor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="75">
+          <name>$valor</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="88" package="dotcloud">
+        <name>idrango</name>
+        <full_name>idrango</full_name>
+        <docblock line="84">
+          <description>Devuelve el nombre del compilador que utilizará proyecto</description>
+          <long-description></long-description>
+          <tag line="84" name="return" description="Valor de la propiedad" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="98" package="dotcloud">
+        <name>proyectos</name>
+        <full_name>proyectos</full_name>
+        <docblock line="94">
+          <description>Devuelve el id, nombre y rango de todos los proyectos del usuario</description>
+          <long-description></long-description>
+          <tag line="94" name="return" description="Listado de proyectos" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="114" package="dotcloud">
+        <name>listar</name>
+        <full_name>listar</full_name>
+        <docblock line="110">
+          <description>Devuelve el id, nombre y rango de todos los usuarios, a los que el usuario actual puede acceder</description>
+          <long-description></long-description>
+          <tag line="110" name="return" description="Listado de usuarios" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="143" package="dotcloud">
+        <name>borrar</name>
+        <full_name>borrar</full_name>
+        <docblock line="138">
+          <description>Elimina el objeto de la BD</description>
+          <long-description></long-description>
+          <tag line="138" name="param" description="ID del usuario" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="138" name="return" description="Si ha tenido éxito devuelve un 0" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="143">
+          <name>$id</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="160" package="dotcloud">
+        <name>crear</name>
+        <full_name>crear</full_name>
+        <docblock line="152">
+          <description>Crea un usuario en la BD de datos</description>
+          <long-description></long-description>
+          <tag line="152" name="param" description="Nombre de usuario" type="string" variable="$nombre">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="152" name="param" description="Apellidos de usuario" type="string" variable="$apellidos">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="152" name="param" description="Email de usuario" type="string" variable="$email">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="152" name="param" description="Password de usuario" type="string" variable="$password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="152" name="param" description="ID del rango de usuario" type="string" variable="$idrango">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="160">
+          <name>$nombre</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="160">
+          <name>$apellidos</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="160">
+          <name>$email</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="160">
+          <name>$password</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="160">
+          <name>$idrango</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Formulario.php" hash="3a67fb06e7b526ff11e5db351778ac5d" package="dotcloud"/>
+  <package name="dotcloud" full_name="dotcloud"/>
+  <namespace name="global" full_name="global"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>

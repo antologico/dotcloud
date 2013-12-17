@@ -1,0 +1,229 @@
+/*
+		 
+			Proyecto : 	.cloud
+			Autor :		Antonio Juan Sánchez Martín
+			Fecha : 	5 / 11 /2012
+		
+		CSS para selector_proeyctos.php	
+*/
+
+body
+{
+	min-width: 		500px;
+	min-height: 	500px;
+}
+
+div#marco
+{
+	width: 			300px;
+	position:		absolute;
+	left:			50%;
+	top:			50%;
+	margin-top:		-230px;
+	margin-left: 	-180px;
+	height:			400px;
+}
+
+img#logo
+{
+	position: 		absolute;
+	top: 			-27px;
+	left:			280px;
+}
+
+
+#cargador_items
+{
+	margin: 		20px;
+}
+/* -------- BOTONES ---------- */
+
+#listado_items li
+{
+	background: 		url(../imagenes/fondo_boton_gris.jpg) repeat-x;
+	height: 			31px;
+	list-style-image:	none;
+  	list-style: 		none;
+  	list-style-type: 	none;
+  	border-bottom: 	1px solid #999;
+  	 -moz-transition: all 0.2s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.2s ease-in;
+    /* Opera */
+    -o-transition: all 0.2s ease-in;
+    /* Standard */
+    transition: all 0.2s ease-in;
+}
+
+#listado_items li:hover
+{
+	background: 	#f1decf;
+}
+
+input[type="button"]
+{
+	height: 		100%;
+	width: 			300px;
+	color:			#666;
+	overflow:		hidden;
+	text-align: 	left;
+	padding-left: 	10px;
+	display: 		block;
+	float:			left;
+	background: 	none;
+	-webkit-transition	: background-position 0.2s ease-out;
+	-moz-transition		: background-position 0.2s ease-out; 
+	-o-transition:		: background-position 0.2s ease-out;
+	transition:			: background-position 0.2s ease-out;	
+}
+
+#listado_items input[type="button"]:hover
+{
+	color:			#a14e0a;
+}
+
+#listado_items input[type="button"].boton_entrar_borrar
+{
+	width: 			250px;		
+}
+
+#listado_items input[type="button"].boton_borrar
+{
+	float:			left;	
+	width:			31px;
+	height: 		30px;
+	margin-top: 	2px;
+	padding:		0;
+	background: 	url(../imagenes/botones/eliminar.png) center left repeat-x;
+}
+
+
+#listado_items input[type="button"].boton_borrar:hover { background-position: -31px; }
+
+/* Botono de nuevo item */
+input[type="button"]#form_nuevo_nuevo
+{
+	background: 	#055871 url(../imagenes/fondo_boton.jpg) top center repeat-x;
+	border: 		2px solid #31567c;
+	border-radius: 	5px;
+	color:			#72aabc;
+	text-transform: uppercase;
+	text-transform: uppercase;
+	width: 			100%;
+	height: 		27px;
+	text-align:		center;
+}
+
+input[type="button"]#form_nuevo_nuevo:hover
+{
+	color:			#f80;
+	border-color: 	#f80;
+	background: 	#412b00;
+	-moz-transition: all 0.1s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.1s ease-in;
+    /* Opera */
+    -o-transition: all 0.1s ease-in;
+    /* Standard */
+    transition: all 0.1s ease-in;
+}
+
+#listado_items
+{
+	background: 	#DDD;	
+	margin-top: 	10px;
+	margin-bottom: 	10px;
+	height:			340px;
+	border: 		1px solid #AAA;	
+	text-align: 	center;
+}
+
+#cargador
+{
+	padding:		10px;
+}
+
+
+/* Botones superiores */
+
+#botones_administracion
+{
+	position: 		absolute;
+	right: 			10px;
+	top:			5px;
+	text-align: 	right;
+}
+
+@media (max-height:700px)
+{
+	#botones_administracion
+	{
+		width: 		40px;
+	}
+}
+
+#botones_administracion input
+{
+	width:			31px;
+	margin-top:		5px;
+	margin-right: 	5px;
+	height: 		30px;
+	float: 			right;
+	-webkit-transition	: background-position 0.1s ease-out;
+	-moz-transition		: background-position 0.1s ease-out; 
+	-o-transition:		: background-position 0.1s ease-out;
+	transition:			: background-position 0.1s ease-out;
+}
+#botones_administracion input:hover, #botones_administracion .seleccionado { background-position: -31px; }
+
+#boton_idioma
+{
+	background: 	url(../imagenes/botones/idioma.png) top left no-repeat;
+}
+
+#boton_proyectos
+{
+	background: 	url(../imagenes/botones/proyectos.png) top left no-repeat;
+}
+
+#boton_manual
+{
+	background: 	url(../imagenes/botones/manual.png) top left no-repeat;
+}
+
+#boton_ayuda
+{
+	background: 	url(../imagenes/botones/ayuda.png) top left no-repeat;
+}
+
+#boton_ayuda.ayuda_inactiva
+{
+	background-position: -31px;
+}
+
+#boton_ayuda.ayuda_inactiva:hover
+{
+	background-position: 0px;
+}
+
+
+#boton_configurar
+{
+	background: 	url(../imagenes/botones/compilar.png) top left no-repeat;
+}
+
+
+
+#boton_usuarios
+{
+	background: 	url(../imagenes/botones/usuarios.png) top left no-repeat;
+}
+
+#boton_salir
+{
+	background: 	url(../imagenes/botones/salir.png) top left no-repeat;
+}
+
+
+
+

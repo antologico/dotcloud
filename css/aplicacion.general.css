@@ -1,0 +1,108 @@
+/*
+		 
+			Proyecto : 	.cloud
+			Autor :		Antonio Juan Sánchez Martín
+			Fecha : 	5 / 11 /2012
+			
+*/
+
+*
+{
+	border:					0px;
+	padding:				0px;
+	margin:					0px;
+	font-size: 				12px;
+	color:					#555;
+	font-family: 			Arial, Helvetica, sans-serif;
+}
+
+html
+{
+	background: 			#aad3f2 url(../imagenes/fondo_index.jpg) top center no-repeat;
+}
+
+body, html
+{
+	width: 					100%;
+	height: 				100%;
+}
+
+body, html, table, div
+{
+	font-size: 				12px;
+}
+
+.dialogo
+{
+	position: 				absolute;
+	background: 			#fff;
+	border-radius: 			10px;
+	padding:				30px;
+	-moz-box-shadow: 		3px 3px 3px #000;
+	-webkit-box-shadow: 	3px 3px 3px #000;
+	box-shadow: 			3px 3px 3px rgba(0,0,0,0.5);
+	-o-transition: 			x 2s;
+}
+
+input[disabled], input[readonly]
+{
+	background: 			#DDD;
+	color:					#333;
+}
+
+.oculto
+{
+		display: 			none;
+}
+
+/* ----------------------------------- */
+/* --------- Capa de carga ----------- */
+/* ----------------------------------- */
+
+.cargador, .fondo_carga
+{
+		position:			absolute;
+		margin: 			0;			
+		bottom: 			0px;
+        left: 				0px;
+        right: 				0px;	
+        top:				0px;
+        background: 		url(../imagenes/fondo_semitransparente.png);
+        text-align: 		center;
+        vertical-align: 	middle;
+        z-index:			500;
+        display: 			none;
+}
+
+.cargador img
+{
+		position:			absolute;
+		top: 				50%;
+		left:				50%;
+		margin-top: 		-32px;
+		margin-left: 		-32px;	
+		padding:			20px;
+		background:  		#FFF;
+		border-radius: 		5px;
+}
+
+/* ----------------------------------- */
+/* --------- Capa de carga ----------- */
+/* ----------------------------------- */
+
+.ventanaayuda
+{
+	z-index: 				3000; 
+	position: 				absolute; 
+	display:				none;
+	padding: 				10px;
+	padding-left:			30px; 			
+	max-width: 				150px; 
+	font-size: 				11px;
+	top:					10px;
+	left:					10px;
+	background: 			url(../imagenes/logo_minicono_ayuda.png) left top no-repeat;
+	background-color: 		rgba(0, 20, 50, 0.7); 
+	color: 					#fff; 
+	border-radius: 			0 10px 10px 10px; 
+}

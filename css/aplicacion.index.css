@@ -1,0 +1,152 @@
+/*
+		 
+			Proyecto : 	.cloud
+			Autor :		Antonio Juan Sánchez Martín
+			Fecha : 	5 / 11 /2012
+			
+*/
+
+div.index
+{
+	position: 		absolute;
+	left: 			0px;
+	top: 			0px;
+	right: 			0px;
+	bottom: 		0px;
+	margin: 		0px;
+	padding-top: 	20px;
+	text-align: 	center;
+	vertical-align: middle;
+	overflow: 		hidden;
+	min-height:		500px;
+}
+
+div.formulario
+{
+	width: 			300px;
+	position:		absolute;
+	left:			50%;
+	top:			50%;
+	margin-top:		0px;
+	margin-left: 	-180px;
+	height:			90px;
+	display: 		none;
+	z-index: 		1;
+}
+
+div.index img#logo
+{
+	position:		absolute;
+	left:			50%;
+	top:			50%;	
+	margin-top:		-220px;
+	margin-left: 	-150px;
+}
+
+div#capa_mensajes
+{
+	width: 			260px;
+	text-align: 	center;
+	position:		absolute;
+	left:			50%;
+	top:			50%;
+	margin-top:		152px;
+	margin-left: 	-160px;
+	padding:		20px;
+	background: 	rgba(0,0,0,0.5);
+	border-radius: 	0 0 20px 20px;
+	z-index: 		0;
+}
+
+p#mensajes
+{
+	text-align:		center;
+	color:			#FFF;
+}
+
+#nueva_cuenta
+{
+	position: 		absolute;
+	left:			20px;
+	bottom: 		20px;
+}
+
+#nueva_cuenta
+{
+	width: 250px;
+	height: 30px;
+}
+#nueva_cuenta *
+{
+	float: left;
+}
+
+#boton_idioma
+{
+	margin-left: 	5px;
+	margin-top: 	-1px;
+	width:			30px;
+	min-width: 		31px;
+	height: 		27px;
+	background: 	url(../imagenes/botones/idioma.png) top left no-repeat;
+	background-position: -3px; 
+	border:			2px solid #31567c;
+}
+
+#boton_idioma:hover { background-position: -34px; }
+
+input[type="text"], 
+input[type="password"]
+{
+	border: 		2px solid #AAA;
+	height: 		20px;
+	min-width: 		180px;
+	border-radius: 	5px;
+}
+
+input[type="button"]
+{
+	background: 	#055871 url(../imagenes/fondo_boton.jpg) top center repeat-x;
+	border: 		2px solid #31567c;
+	height: 		25px;
+	min-width: 		180px;
+	border-radius: 	5px;
+	color:			#72aabc;
+	text-transform: uppercase;
+}
+
+input[type="button"]:hover
+{
+	color:			#f80;
+	border-color: 	#f80;
+	background: 	#412b00;
+}
+
+#form_inicio_entrar
+{
+	width: 			290px;
+}
+
+.etiqueta, .campo
+{
+	padding: 		3px;
+	float:			left;
+	text-align:		left;
+	width: 			100px;
+}
+
+div#cargador
+{	
+	position: 		absolute;
+	background: 	#FFF;
+	text-align:		center;
+	vertical-align: middle;
+	height:			80px;
+	width: 			300px;
+	padding-top: 	30px;
+}
+
+img#icono_error
+{
+	float: 			left;
+}

@@ -1,0 +1,150 @@
+/*
+		 
+	Proyecto : 	.cloud
+	Autor :		Antonio Juan Sánchez Martín
+	Fecha : 	5 / 11 /2012
+			
+*/
+
+#ventana_usuarios
+{
+	display: 			none;
+}
+
+#ventana_usuarios .cargador
+{
+
+	border-radius: 		10px;
+}
+
+#datos_usuarios
+{
+	position:			absolute;
+	margin: 			0;			
+	bottom: 			50px;
+    left: 				50px;
+    right: 				50px;	
+    top:				50px;
+    z-index:			500;
+    background: 		#FFF;
+}
+
+/* ----------- paneles ------- */
+
+#datos_usuarios .listado_usuarios
+{
+	height:				100%;
+	width: 				100%;
+}
+
+#datos_usuarios .tabla_usuarios
+{
+	width: 				100%;
+	height:				100%;	
+	border-spacing: 	0px;
+}
+
+#datos_usuarios .tabla_usuarios th
+{
+	height: 			30px;
+	border:				0;
+}
+
+#datos_usuarios .tabla_usuarios td
+{
+	vertical-align: 	top;
+	width: 				50%;
+}
+
+#datos_usuarios .tabla_usuarios .center
+{
+	width: 				120px;
+	text-align: 		center;
+	border:				0;
+	vertical-align: 	middle;
+	background: 		none;
+}
+
+#datos_usuarios .selector_usuarios
+{
+	width: 				100%;
+	height:				100%;
+	background:			#e47d0f;	
+	padding:			10px;
+	border-radius: 		10px;
+	font-size:			 14px;
+}
+
+#datos_usuarios .selector_usuarios option:hover
+{
+
+}
+
+#datos_usuarios #ventana_usuarios_seleccionados
+{
+	background:			#003e61;		
+}
+
+#datos_usuarios .selector_roles
+{
+	text-align: 		center;
+	margin-top: 		30px;
+	padding:			10px;
+	padding-top:		20px;
+	background:			#999;	
+	font-size:			 14px;
+}
+
+#datos_usuarios .selector_usuarios *
+{
+	color:				#FFF;
+}
+
+#datos_usuarios .selector_roles *
+{
+	color:				#FFF;
+}
+
+/* ------------- botones -----*/
+
+#datos_usuarios .flecha
+{
+	margin-top:			5px;
+	margin-right: 		5px;
+	width:				56px;
+	height: 			30px;
+	-webkit-transition	: background-position 0.2s ease-out;
+	-moz-transition		: background-position 0.2s ease-out; 
+	-o-transition:		: background-position 0.2s ease-out;
+	transition:			: background-position 0.2s ease-out;
+}
+
+#datos_usuarios .flecha_izquierda 
+{
+	background: 		url(../imagenes/botones/flecha_izquierda.png) top left no-repeat;
+}
+
+#datos_usuarios .flecha_izquierda:hover  
+{
+	background-position: -56px; 
+}
+
+#datos_usuarios .flecha_derecha 
+{
+	background: 		url(../imagenes/botones/flecha_derecha.png) top left no-repeat;
+	background-position: -56px;
+}
+
+#datos_usuarios .flecha_derecha:hover  
+{ 		
+	background-position: 0px; 
+}
+
+
+/* ----------------------- */
+
+#boton_cerrado_usuarios
+{
+	right:				10px;
+}
+

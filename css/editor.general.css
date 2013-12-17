@@ -1,0 +1,177 @@
+/*
+		 
+			Proyecto : 	.cloud
+			Autor :		Antonio Juan Sánchez Martín
+			Fecha : 	5 / 11 /2012
+			
+*/
+
+html
+{
+	background: 	#f5f5f5 url(../imagenes/fondo_explorador_archivos.jpg) top left no-repeat;
+}
+
+
+/* ----------------------------------- */
+/* --------- Botones comunes --------- */
+/* ----------------------------------- */
+
+.cerrar[type="button"]
+{
+	position:		absolute;
+	width:			20px;
+	height:			20px;
+	top: 			5px;
+	background: 	url(../imagenes/botones/ventana_cerrar.png) top left no-repeat;
+}
+
+
+.cerrar[type="button"]:hover
+{
+	background-position: -20px;
+}
+
+/* ----------------------------------- */
+
+#editor_capa
+{
+		position:		absolute;
+		display: 		block;	      
+		margin: 		0;
+        bottom: 		0;
+        left: 			20%;
+        right: 			0;	
+        top:			40px;	
+		border-radius: 	20px 0 0 0;
+        background:		#555;
+        border-left: 	3px solid #F80;
+		border-top: 	2px solid #F80;
+}
+
+#editor_contenedor *
+{
+		font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+.editor
+{
+		position:		absolute;
+		display: 		block;	
+		width:			100%;	        
+		margin: 		0;
+        bottom: 		0;
+        left: 			0;
+        right: 			0;	
+        top:			30px;		
+}
+
+.pre_editor
+{ 
+        margin: 		0;
+        bottom: 		0;
+        left: 			0;
+        right: 			0;
+        top:			0;
+}
+
+#contenedor_solapas 
+{
+		position:		absolute;
+		display: 		block;		
+        margin: 		0;
+        height:			40px;
+        background:		#555;
+        right:			0px;
+        min-width: 		100%
+        top: 			0px;
+        left:			0px;
+        padding-left: 	40px;
+        border-radius: 	20px 0 0 0;
+        
+}
+
+#solapas 
+{
+		padding-left:	40px;
+		height:			40px;
+		border-radius: 	20px 0 20px 0;
+		overflow: 		hidden;
+}
+
+#solapas_capa
+{
+		height: 		40px;
+		left:			0px;
+		top:			0px;
+		position: 		absolute;
+		overflow: 		hidden;
+}
+
+.solapa
+{
+		background: 	#555;
+		margin: 		0px;
+		padding:	 	0;
+		vertical-align: middle;
+		height: 		40px;
+		display: 		block;
+		float: 			left;
+		left:			0px;
+		padding-left: 	10px;
+		padding-right: 	10px;
+		border-radius: 	20px 0 40px 0;
+		padding-right: 	60px;
+		margin-left: 	-40px;
+		border-left: 	2px solid #444;
+}
+
+.solapa:hover
+{
+		background: 	#464646;
+}
+
+.solapa_activa
+{
+		background: 	#141414;
+}
+
+.solapa input.nombre
+{	
+		background: 	none;
+		color: 			#FFF;
+		margin: 		0px;
+		padding:	 	0;
+		margin-top: 	7px;
+		width: 			153px;
+		margin-right: 	5px;
+		margin-left: 	10px;
+		text-align: 	left;
+		float: 			left;
+				
+}
+
+.solapa input.cerrar
+{
+	margin-bottom: 	-5px;
+	background: 	url(../imagenes/botones/ventana_cerrar_17x17.png) top left no-repeat;
+	opacity: 		0.4;
+	position:		relative !important;
+	float:			right;
+}
+
+.solapa:hover input.cerrar
+{
+	opacity: 		1;	
+}
+
+.solapa:hover input.cerrar:hover
+{
+	opacity: 				1;		
+	background-position: 	-18px;
+}
+
+
+.ace-twilight .ace_gutter 
+{
+	background: black;
+}

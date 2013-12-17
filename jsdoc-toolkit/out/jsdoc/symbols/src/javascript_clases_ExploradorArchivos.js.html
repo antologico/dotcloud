@@ -1,0 +1,210 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  	Explorador de archivos de la GUI
+<span class='line'>  3</span> 	
+<span class='line'>  4</span> 	@author Antonio Juan Sánchez Martín
+<span class='line'>  5</span> 	@class ExploradorArchivos
+<span class='line'>  6</span> 	@version 0.9
+<span class='line'>  7</span> 	@param {Contenedor} contenedor - Referencia al componente padre
+<span class='line'>  8</span> */</span><span class="WHIT">		
+<span class='line'>  9</span> 
+<span class='line'> 10</span> 
+<span class='line'> 11</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">ExploradorArchivos</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">controlador</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="PUNC">{</span><span class="WHIT"> 
+<span class='line'> 13</span> 		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">		</span><span class="COMM">// Creación del explorador en el body</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">		</span><span class="COMM">// Creación de la capa del menú contextual para archivos</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">		</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"body"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">append</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="STRN">'&lt;div id="menucontextual" class="contextMenu">&lt;ul>&lt;li id="descargar">&lt;img src="imagenes/descargar.png" />'</span><span class="PUNC">+</span><span class="NAME">_</span><span class="PUNC">(</span><span class="STRN">'Descargar'</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">'&lt;/li>&lt;li id="eliminar">&lt;img src="imagenes/eliminar.png" />'</span><span class="PUNC">+</span><span class="NAME">_</span><span class="PUNC">(</span><span class="STRN">'Eliminar'</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">'&lt;/li>&lt;/ul>&lt;/div>'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">		</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#menucontextual"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">hide</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">		</span><span class="COMM">// $id de la explorador</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">		</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"body"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">append</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="STRN">'&lt;div id="explorador_archivos_capa">&lt;div id="input_buscador_archivos_capa">&lt;input id="buscador" type="text"  /> &lt;/div>&lt;div class="scroll-pane">&lt;div id="explorador_archivos"> &lt;/div> &lt;/div> &lt;/div>'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">	
+<span class='line'> 21</span> 		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">explorador</span><span class="WHIT">				</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#explorador_archivos"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">	
+<span class='line'> 23</span> 		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">buscador</span><span class="WHIT">				</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#buscador"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">contenedor</span><span class="WHIT">				</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">"#explorador_archivos_capa"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">	
+<span class='line'> 25</span> 		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">carga</span><span class="WHIT">					</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Cargador</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="STRN">"explorador_archivos_carga"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">contenedor</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'> 26</span> 		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">controlador</span><span class="WHIT">				</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">controlador</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">explorarando</span><span class="WHIT">			</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">autoref</span><span class="WHIT">					</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">		</span><span class="COMM">// Autoreferencia del objeto, útil para llamadas dentro de funciones</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">primera_ejecucion</span><span class="WHIT">		</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">		</span><span class="COMM">// Marca la primera carga del explorador. Para activar la primera búsqueda</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="WHIT">		
+<span class='line'> 34</span> 		</span><span class="COMM">// -----------------------------------------------------</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">		</span><span class="COMM">//	Iniciación del explorador de archivos</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">		</span><span class="COMM">//	-----------------------------------------------------			</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">		
+<span class='line'> 38</span> 		</span><span class="COMM">/**
+<span class='line'> 39</span> 			Carga el listado de archivos en el explorador de archivos
+<span class='line'> 40</span> 		    @function cargarArchivosExplorador
+<span class='line'> 41</span> 		    @memberof ExploradorArchivos
+<span class='line'> 42</span> 		*/</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">		</span><span class="NAME">this.cargarArchivosExplorador</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">explorarando</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> 
+<span class='line'> 47</span> </span><span class="WHIT">			</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">			</span><span class="COMM">// Obtenemos el patrón de búsqueda</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">patron</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">buscador.val</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT">  
+<span class='line'> 51</span> 				</span><span class="NAME">patron</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&patron="</span><span class="PUNC">+</span><span class="NAME">buscador.val</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">			</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">			</span><span class="COMM">// </span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">			</span><span class="NAME">autoref.explorar</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> 
+<span class='line'> 56</span> </span><span class="WHIT">			</span><span class="NAME">explorador.fileTree</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">	
+<span class='line'> 57</span> 				        </span><span class="NAME">root</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">				        </span><span class="NAME">script</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'servicios/archivo.listar.php?html'</span><span class="PUNC">+</span><span class="NAME">patron</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">				        </span><span class="NAME">expandSpeed</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">				        </span><span class="NAME">collapseSpeed</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">				        </span><span class="NAME">multiFolder</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">archivo</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'> 64</span> 			</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">					</span><span class="NAME">controlador.cargarArchivo</span><span class="PUNC">(</span><span class="NAME">archivo</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'> 68</span> 			</span><span class="PUNC">{</span><span class="WHIT"> 
+<span class='line'> 69</span> 					</span><span class="NAME">autoref.cargarMenuContextual</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">					
+<span class='line'> 71</span> 					</span><span class="COMM">// Para la primera ejecución abrimos también los archivos que han quedado abiertos</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">primera_ejecucion</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">					</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">						</span><span class="NAME">primera_ejecucion</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'> 75</span> 						</span><span class="NAME">controlador.recrearSesion</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">						</span><span class="NAME">explorador.html5Uploader</span><span class="PUNC">(</span><span class="STRN">"/"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">controlador.surbirArchivo</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="WHIT">					</span><span class="NAME">autoref.explorar</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">		
+<span class='line'> 81</span> 			</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'> 82</span> 		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 83</span> 
+<span class='line'> 84</span> </span><span class="WHIT">		</span><span class="COMM">// -----------------------------------------------------</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">		</span><span class="COMM">//	Activar/Desactivar el explorador</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">		</span><span class="COMM">//	-----------------------------------------------------			</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 89</span> 			Activa el explorador (elimina la capa de carga)
+<span class='line'> 90</span> 		    @function explorar
+<span class='line'> 91</span> 		    @param {int} activo activo (1) / inactivo (0)
+<span class='line'> 92</span> 		    @memberof ExploradorArchivos
+<span class='line'> 93</span> 		*/</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">		</span><span class="NAME">this.explorar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">activo</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">activo</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">			</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">explorarando</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">				</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">					</span><span class="NAME">explorarando</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">					</span><span class="NAME">carga.desactivar</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">			</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">explorarando</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">				</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">					</span><span class="NAME">explorarando</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">					</span><span class="NAME">carga.activar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>113</span> 
+<span class='line'>114</span> 
+<span class='line'>115</span> </span><span class="WHIT">		</span><span class="COMM">//  -----------------------------------------------------		</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">		</span><span class="COMM">// Asigna valores para el menú contextual</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">		</span><span class="COMM">// -----------------------------------------------------			</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>120</span> 			Asigna el evento de menú contextual a cada uno de los ítems del explorador de archivos
+<span class='line'>121</span> 		    @function cargarMenuContextual
+<span class='line'>122</span> 		    @param {int} activo activo (1) / inactivo (0)
+<span class='line'>123</span> 		    @memberof ExploradorArchivos
+<span class='line'>124</span> 		*/</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">		</span><span class="NAME">this.cargarMenuContextual</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">				</span><span class="NAME">explorador.find</span><span class="PUNC">(</span><span class="STRN">'LI A'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">contextMenu</span><span class="PUNC">(</span><span class="STRN">'menucontextual'</span><span class="PUNC">,</span><span class="WHIT"> 
+<span class='line'>128</span> 				</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">					</span><span class="NAME">bindings</span><span class="PUNC">:</span><span class="WHIT"> 
+<span class='line'>130</span> 					</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">						</span><span class="STRN">'descargar'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">t</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'>132</span> 						</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">							</span><span class="COMM">// Solicitamos descargar el archivo en ventana nueva</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">							</span><span class="NAME">controlador.descargarArchivo</span><span class="PUNC">(</span><span class="NAME">t.rel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">						</span><span class="STRN">'eliminar'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">t</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'>137</span> 						</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">							</span><span class="COMM">// Solicitamos eliminar archivo vía post</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">							</span><span class="NAME">controlador.eliminarArchivo</span><span class="PUNC">(</span><span class="NAME">t.rel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">					
+<span class='line'>144</span> 				</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">				
+<span class='line'>146</span> 				</span><span class="COMM">// Drag and Drop sobre directorios y sobre el general</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">				</span><span class="COMM">// -------------------------------------------------</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">				
+<span class='line'>149</span> 				
+<span class='line'>150</span> 				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lis</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">explorador.find</span><span class="PUNC">(</span><span class="STRN">"li.directory"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lis.length</span><span class="PUNC">></span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">					</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">lis.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">							</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">lis</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html5Uploader</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">lis</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">find</span><span class="PUNC">(</span><span class="STRN">"A"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">"rel"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">controlador.surbirArchivo</span><span class="WHIT">  </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">				
+<span class='line'>155</span> 				
+<span class='line'>156</span> 
+<span class='line'>157</span> 		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>158</span> 
+<span class='line'>159</span> </span><span class="WHIT">		</span><span class="COMM">//	-----------------------------------------------------		</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">		</span><span class="COMM">//	Listado de directorios</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">		</span><span class="COMM">//	-----------------------------------------------------			</span><span class="WHIT">
+<span class='line'>162</span> 
+<span class='line'>163</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>164</span> 			Devuelve un listado con los directorios del explorador
+<span class='line'>165</span> 			@function clistarDirectorios
+<span class='line'>166</span> 		    @memberof ExploradorArchivos
+<span class='line'>167</span> 		*/</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">		</span><span class="NAME">this.listarDirectorios</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">misdirectorios</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="STRN">"/"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"/"</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">			</span><span class="COMM">// Para evitar llamar al servicio web nuevamente, obtenemos el valor de la lista de archivo del explorador</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lis</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">explorador.find</span><span class="PUNC">(</span><span class="STRN">"li.directory"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lis.length</span><span class="PUNC">></span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">			</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">				</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">lis.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">				</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">					</span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">lis</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">find</span><span class="PUNC">(</span><span class="STRN">"a"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">"rel"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">					</span><span class="NAME">misdirectorios</span><span class="PUNC">[</span><span class="NAME">dir</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>181</span> 
+<span class='line'>182</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">misdirectorios</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>184</span> 
+<span class='line'>185</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>186</span> 			Devuelve una referencia al contenedor padre
+<span class='line'>187</span> 		    @function contenedor
+<span class='line'>188</span> 		    @memberof Editor
+<span class='line'>189</span> 		*/</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">		</span><span class="NAME">this.contenedor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> 
+<span class='line'>191</span> 		</span><span class="PUNC">{</span><span class="WHIT"> 
+<span class='line'>192</span> 			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">contenedor</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'>193</span> 		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>194</span> 
+<span class='line'>195</span> </span><span class="WHIT">		</span><span class="COMM">//	-----------------------------------------------------		</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">		</span><span class="COMM">//	Iniciación de la clase</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">		</span><span class="COMM">//	-----------------------------------------------------			</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">		</span><span class="NAME">this.cargarArchivosExplorador</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">		</span><span class="COMM">//	Iniciacion del buscador de archivos</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">		</span><span class="NAME">buscador.keyup</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">autoref.cargarArchivosExplorador</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">change</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">		</span><span class="COMM">// --------------------------------------------------------</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="PUNC">}</span></pre></body></html>

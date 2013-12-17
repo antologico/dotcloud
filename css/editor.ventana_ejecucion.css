@@ -1,0 +1,147 @@
+/*
+		 
+	Proyecto : 	.cloud
+	Autor :		Antonio Juan Sánchez Martín
+	Fecha : 	5 / 11 /2012
+			
+*/
+
+#ventana_ejecucion
+{
+	display: 		none;
+}
+
+#ventana_ejecucion .cargador
+{
+
+	border-radius: 	10px;
+}
+
+#datos_ejecucion 
+{
+	position:		absolute;
+	margin: 		0;			
+	bottom: 		30px;
+    left: 			30px;
+    right: 			30px;	
+    top:			30px;
+    z-index:		500;
+    background: 	#FFF;
+}
+
+/* -------------------------- */
+/* --- PANELES DE SALIDA -----*/
+
+
+#panel_ejecucion_salida, #panel_entrada_ejecucion
+{
+	position:		absolute;
+	margin: 		0;	
+	background: 	#222;
+	color:			#AAA;
+	bottom: 		10px;
+    left: 			0px;	
+   	right: 			0px;	   
+    top:			30px;
+    padding:		10px;
+    border-radius: 	5px;
+    text-align: 	left;
+    display:		none;
+    width:			auto;
+
+}
+#panel_entrada_ejecucion
+{
+	color: 			#ccc;
+	opacity: 		0;
+	filter:  		alpha(opacity=0);
+	display:		block;
+
+}
+#panel_lista_salida
+{
+	position:		absolute;
+	margin: 		0;	
+	background: 	#DDD;
+	color:			#000;
+	bottom: 		10px;
+    left: 			10px;	
+    top:			30px;
+    border-radius: 	5px;
+    text-align: 	left;
+    margin-left: 	-10px;
+    display:		none;    
+}
+
+#panel_lista_salida ul
+{
+	margin:			0px;
+	margin-top: 	5px; 
+	margin-bottom: 	5px;
+}
+
+
+#panel_lista_salida li
+{
+	margin:			0px;
+	padding-left:	10px;
+	padding-right:	10px;
+	padding-bottom: 5px; 
+	padding-top: 	5px;
+	border-bottom:	1px solid #FFF; 	
+}
+
+#panel_lista_salida li.marcado a
+{
+	font-weight: 	bold;
+	color:			#005585;
+}
+
+#panel_lista_salida li.marcado:hover
+{
+	background:		#444;
+}
+
+#panel_lista_salida li.marcado:hover a
+{
+	color: 			#FFF;
+}
+
+/* ----------------------- */
+
+#boton_cerrado_ejecucion
+{
+	right:			10px;
+}
+
+
+#en_ejecucion
+{
+	position:		absolute;
+	display: 		block;
+	left:			10px;
+	top:			5px;
+	display: 		none;
+}
+
+
+#reejecutar.compilacion
+{
+	background:		url(../imagenes/botones/recompilar.png) top left no-repeat;
+}
+
+#reejecutar 
+{
+	background:		url(../imagenes/botones/reejecutar.png) top left no-repeat;
+	margin-top: 	5px;
+	margin-right: 	5px;
+	width: 			31px;
+	display: 		none;
+	height: 		30px;
+	position: 		absolute;
+	z-index:		300;
+	bottom:			25px;
+	right:			20px;
+}
+
+#reejecutar:hover { background-position: -31px; }
